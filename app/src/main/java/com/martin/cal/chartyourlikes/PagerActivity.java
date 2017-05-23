@@ -12,9 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.martin.cal.chartyourlikes.dummy.DummyContent;
-
-public class PagerActivity extends AppCompatActivity implements ProfileFragment.OnFragmentInteractionListener, MovieFragment.OnListFragmentInteractionListener {
+public class PagerActivity extends AppCompatActivity implements ProfileFragment.OnFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -72,11 +70,6 @@ public class PagerActivity extends AppCompatActivity implements ProfileFragment.
         //super.onSaveInstanceState(outState);
     }
 
-    @Override
-    public void onListFragmentInteraction(DummyContent.DummyItem item) {
-
-    }
-
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -93,7 +86,7 @@ public class PagerActivity extends AppCompatActivity implements ProfileFragment.
             switch (position)
             {
                 case 0: return ProfileFragment.newInstance();
-                case 1: return MovieFragment.newInstance();
+                case 1: return ChartListFragment.newInstance();
             }
             return null;
         }
