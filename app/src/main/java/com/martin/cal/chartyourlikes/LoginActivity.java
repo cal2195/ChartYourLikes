@@ -37,6 +37,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onSuccess(LoginResult loginResult) {
                 System.out.println("Facebook Login Successful!");
+                loginCompleted();
             }
 
             @Override
@@ -50,11 +51,22 @@ public class LoginActivity extends AppCompatActivity {
                 System.out.println(exception.toString());
             }
         });
+
+        if (!AccessToken.getCurrentAccessToken().isExpired())
+        {
+            loginCompleted();
+        }
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    protected void loginCompleted()
+    {
+        Intent intent = new Intent(LoginActivity.this, PagerActivity.class);
+        startActivity(intent);
     }
 }
