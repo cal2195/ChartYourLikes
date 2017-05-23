@@ -17,6 +17,8 @@ import com.facebook.HttpMethod;
 import com.facebook.Profile;
 import com.facebook.login.widget.ProfilePictureView;
 
+import org.json.JSONException;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -64,7 +66,44 @@ public class ProfileFragment extends Fragment {
         TextView nameTextView = (TextView) rootView.findViewById(R.id.nameTextView);
         nameTextView.setText(Profile.getCurrentProfile().getName());
 
+        fetchProfileInfo(rootView);
+
         return rootView;
+    }
+
+    public void fetchProfileInfo(final View rootView)
+    {
+        Bundle profileFields = new Bundle();
+        profileFields.putString("fields", "name,age_range,birthday,email,gender,location,id");
+
+        /* make the API call */
+        GraphRequest request = new GraphRequest(
+                AccessToken.getCurrentAccessToken(),
+                "/" + Profile.getCurrentProfile().getId(),
+                null,
+                HttpMethod.GET,
+                new GraphRequest.Callback() {
+                    public void onCompleted(GraphResponse response) {
+                        System.out.println(response.getJSONObject());
+                        try {
+                            String gender = response.getJSONObject().getString("gender");
+                            TextView genderView = (TextView) rootView.findViewById(R.id.genderTextView);
+                            genderView.setText(gender);
+                        } catch (JSONException e) {
+                            System.out.println("Gender not found!");
+                        }
+                        try {
+                            String email = response.getJSONObject().getString("email");
+                            TextView emailView = (TextView) rootView.findViewById(R.id.emailTextView);
+                            emailView.setText(email);
+                        } catch (JSONException e) {
+                            System.out.println("Email not found!");
+                        }
+                    }
+                }
+        );
+        request.setParameters(profileFields);
+        request.executeAsync();
     }
 
     // TODO: Rename method, update argument and hook method into UI event

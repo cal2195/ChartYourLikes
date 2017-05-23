@@ -11,6 +11,7 @@ import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.Profile;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
@@ -54,6 +55,10 @@ public class LoginActivity extends AppCompatActivity {
 
         if (AccessToken.getCurrentAccessToken() != null && !AccessToken.getCurrentAccessToken().isExpired())
         {
+            if (Profile.getCurrentProfile() == null)
+            {
+                Profile.fetchProfileForCurrentAccessToken();
+            }
             loginCompleted();
         }
     }

@@ -17,4 +17,6 @@
 
     <string name="title_activity_studio_pie_chart">Movies You Like By Studio</string>
 
+    <string name="about">Thank you for using Chart Your Likes! I hope you liked it! :) \n\nThis has been developed as part of Plynk\'s interview process. \n\n\n- Cal Martin 23rd May 2017</string>
+
 </resources>
