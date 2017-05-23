@@ -9,7 +9,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.martin.cal.chartyourlikes.charts.BarChartYears;
+import com.martin.cal.chartyourlikes.charts.YearBarChartActivity;
+import com.martin.cal.chartyourlikes.data.Movies;
 
 
 /**
@@ -19,7 +20,9 @@ import com.martin.cal.chartyourlikes.charts.BarChartYears;
  */
 public class ChartListFragment extends Fragment {
 
-    enum Charts { YEAR_BARCHART };
+    enum Charts { YEAR_BARCHART }
+
+    Bundle movieBundle;
 
     public ChartListFragment() {
         // Required empty public constructor
@@ -48,6 +51,9 @@ public class ChartListFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_chart_list, container, false);
 
+        Movies.movies = new Movies();
+        Movies.movies.fetchMovies();
+
         Button moviesByYearButton = (Button) rootView.findViewById(R.id.moviesByYear);
         moviesByYearButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,7 +70,7 @@ public class ChartListFragment extends Fragment {
         switch (chart)
         {
             case YEAR_BARCHART:
-                Intent intent = new Intent(getContext(), BarChartYears.class);
+                Intent intent = new Intent(getContext(), YearBarChartActivity.class);
                 startActivity(intent);
                 break;
         }

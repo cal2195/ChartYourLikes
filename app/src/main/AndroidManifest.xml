@@ -46,10 +46,13 @@
             android:label="@string/title_activity_pager"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".charts.BarChartYears"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_bar_chart_years"
-            android:theme="@style/FullscreenTheme"></activity>
+            android:name=".charts.YearBarChart"
+            android:label="@string/title_activity_year_bar_chart"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".charts.YearBarChartActivity"
+            android:label="@string/title_activity_year_bar_chart"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

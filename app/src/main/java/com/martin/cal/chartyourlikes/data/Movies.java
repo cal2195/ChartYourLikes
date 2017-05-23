@@ -11,15 +11,16 @@ import com.facebook.Profile;
 import org.json.JSONArray;
 import org.json.JSONException;
 
-import java.util.ArrayList;
-
 /**
  * Created by cal on 23/05/17.
  */
 
 public class Movies {
+    //Singleton
+    public static Movies movies;
+
     Bundle movieFields;
-    JSONArray movies;
+    public JSONArray movieData;
 
     public Movies()
     {
@@ -29,7 +30,7 @@ public class Movies {
 
     public void processMovies(JSONArray movies)
     {
-        this.movies = movies;
+        this.movieData = movies;
     }
 
     public void fetchMovies()
@@ -45,7 +46,7 @@ public class Movies {
                         System.out.println(response.getJSONObject());
                         try {
                             processMovies(response.getJSONObject().getJSONArray("data"));
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             e.printStackTrace();
                         }
                     }
