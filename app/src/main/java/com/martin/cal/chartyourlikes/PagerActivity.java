@@ -1,28 +1,20 @@
 package com.martin.cal.chartyourlikes;
 
 import android.net.Uri;
+import android.os.Bundle;
 import android.support.design.widget.TabLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.os.Bundle;
-import android.view.LayoutInflater;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.TextView;
+import com.martin.cal.chartyourlikes.dummy.DummyContent;
 
-import com.facebook.AccessToken;
-
-public class PagerActivity extends AppCompatActivity implements ProfileFragment.OnFragmentInteractionListener {
+public class PagerActivity extends AppCompatActivity implements ProfileFragment.OnFragmentInteractionListener, MovieFragment.OnListFragmentInteractionListener {
 
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
@@ -80,6 +72,11 @@ public class PagerActivity extends AppCompatActivity implements ProfileFragment.
         //super.onSaveInstanceState(outState);
     }
 
+    @Override
+    public void onListFragmentInteraction(DummyContent.DummyItem item) {
+
+    }
+
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
      * one of the sections/tabs/pages.
@@ -93,13 +90,18 @@ public class PagerActivity extends AppCompatActivity implements ProfileFragment.
         @Override
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
-            return ProfileFragment.newInstance();
+            switch (position)
+            {
+                case 0: return ProfileFragment.newInstance();
+                case 1: return MovieFragment.newInstance();
+            }
+            return null;
         }
 
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 1;
+            return 2;
         }
 
         @Override
