@@ -87,6 +87,7 @@ public class PagerActivity extends AppCompatActivity implements ProfileFragment.
             {
                 case 0: return ProfileFragment.newInstance();
                 case 1: return ChartListFragment.newInstance();
+                case 2: return SettingsFragment.newInstance();
             }
             return null;
         }
@@ -94,7 +95,7 @@ public class PagerActivity extends AppCompatActivity implements ProfileFragment.
         @Override
         public int getCount() {
             // Show 3 total pages.
-            return 2;
+            return 3;
         }
 
         @Override

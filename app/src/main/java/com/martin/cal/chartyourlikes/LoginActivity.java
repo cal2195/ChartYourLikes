@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        if (!AccessToken.getCurrentAccessToken().isExpired())
+        if (AccessToken.getCurrentAccessToken() != null && !AccessToken.getCurrentAccessToken().isExpired())
         {
             loginCompleted();
         }

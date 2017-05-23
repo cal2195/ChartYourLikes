@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.martin.cal.chartyourlikes.charts.StudioPieChartActivity;
 import com.martin.cal.chartyourlikes.charts.YearBarChartActivity;
 import com.martin.cal.chartyourlikes.data.Movies;
 
@@ -20,7 +21,7 @@ import com.martin.cal.chartyourlikes.data.Movies;
  */
 public class ChartListFragment extends Fragment {
 
-    enum Charts { YEAR_BARCHART }
+    enum Charts { YEAR_BARCHART, STUDIO_PIECHART }
 
     Bundle movieBundle;
 
@@ -62,15 +63,29 @@ public class ChartListFragment extends Fragment {
             }
         });
 
+        Button moviesByStudioButton = (Button) rootView.findViewById(R.id.moviesByStudio);
+        moviesByStudioButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                showChart(Charts.STUDIO_PIECHART);
+            }
+        });
+
         return rootView;
     }
 
     private void showChart(Charts chart)
     {
+        Intent intent;
         switch (chart)
         {
             case YEAR_BARCHART:
-                Intent intent = new Intent(getContext(), YearBarChartActivity.class);
+                intent = new Intent(getContext(), YearBarChartActivity.class);
+                startActivity(intent);
+                break;
+
+            case STUDIO_PIECHART:
+                intent = new Intent(getContext(), StudioPieChartActivity.class);
                 startActivity(intent);
                 break;
         }

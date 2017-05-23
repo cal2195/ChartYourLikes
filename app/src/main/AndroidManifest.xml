@@ -39,19 +39,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:label="@string/title_activity_main" />
-        <activity
             android:name=".PagerActivity"
             android:label="@string/title_activity_pager"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".charts.YearBarChart"
-            android:label="@string/title_activity_year_bar_chart"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".charts.YearBarChartActivity"
             android:label="@string/title_activity_year_bar_chart"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".charts.StudioPieChartActivity"
+            android:label="@string/title_activity_studio_pie_chart"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
