@@ -1,5 +1,6 @@
 package com.martin.cal.chartyourlikes;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
@@ -11,6 +12,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.facebook.AccessToken;
+import com.facebook.AccessTokenTracker;
 
 public class PagerActivity extends AppCompatActivity implements ProfileFragment.OnFragmentInteractionListener {
 
@@ -35,6 +39,23 @@ public class PagerActivity extends AppCompatActivity implements ProfileFragment.
 
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(mViewPager);
+
+        // Track logouts!
+        AccessTokenTracker accessTokenTracker = new AccessTokenTracker() {
+            @Override
+            protected void onCurrentAccessTokenChanged(
+                    AccessToken oldAccessToken,
+                    AccessToken currentAccessToken) {
+
+                if (currentAccessToken == null){
+                    //User logged out
+                    System.out.println("LOGOUT");
+                    Intent intent = new Intent(PagerActivity.this, LoginActivity.class);
+                    startActivity(intent);
+                    finish();
+                }
+            }
+        };
     }
 
     @Override

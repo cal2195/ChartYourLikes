@@ -52,9 +52,6 @@ public class ChartListFragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_chart_list, container, false);
 
-        Movies.movies = new Movies();
-        Movies.movies.fetchMovies();
-
         Button moviesByYearButton = (Button) rootView.findViewById(R.id.moviesByYear);
         moviesByYearButton.setOnClickListener(new View.OnClickListener() {
             @Override

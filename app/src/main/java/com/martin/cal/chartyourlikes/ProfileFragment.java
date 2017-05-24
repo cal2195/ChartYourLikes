@@ -15,7 +15,9 @@ import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.HttpMethod;
 import com.facebook.Profile;
+import com.facebook.ProfileTracker;
 import com.facebook.login.widget.ProfilePictureView;
+import com.martin.cal.chartyourlikes.data.Movies;
 
 import org.json.JSONException;
 
@@ -57,18 +59,42 @@ public class ProfileFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
 
+        if (Profile.getCurrentProfile() != null)
+        {
+            loadProfile(rootView);
+        }
+
+        // When the profile changes
+        ProfileTracker mProfileTracker = new ProfileTracker() {
+            @Override
+            protected void onCurrentProfileChanged(Profile profile, Profile profile2) {
+                    loadProfile(rootView);
+            }
+        };
+        mProfileTracker.startTracking();
+
+        return rootView;
+    }
+
+    public void loadProfile(View rootView)
+    {
+        // Load the profile picture
         ProfilePictureView profilePictureView = (ProfilePictureView) rootView.findViewById(R.id.profilePicture);
         profilePictureView.setPresetSize(ProfilePictureView.LARGE);
         profilePictureView.setProfileId(Profile.getCurrentProfile().getId());
 
+        // Update name
         TextView nameTextView = (TextView) rootView.findViewById(R.id.nameTextView);
         nameTextView.setText(Profile.getCurrentProfile().getName());
 
+        // Fetch other details
         fetchProfileInfo(rootView);
 
-        return rootView;
+        // Fetch and process movie likes
+        Movies.movies = new Movies();
+        Movies.movies.fetchMovies();
     }
 
     public void fetchProfileInfo(final View rootView)
@@ -104,13 +130,6 @@ public class ProfileFragment extends Fragment {
         );
         request.setParameters(profileFields);
         request.executeAsync();
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
