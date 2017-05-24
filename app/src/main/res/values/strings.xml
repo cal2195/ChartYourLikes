@@ -1,17 +1,12 @@
 <resources>
-    <string name="app_name">ChartYourLikes</string>
+    <string name="app_name">Chart Your Likes</string>
 
     <string name="facebook_app_id">1746484632309663</string>
     <string name="fb_login_protocol_scheme">fb1746484632309663</string>
-    <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_pager">Chart Your Likes</string>
-    <string name="action_settings">Settings</string>
-    <string name="section_format">Hello World from section: %1$d</string>
-
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="title_activity_year_bar_chart">Movies You Like By Year</string>
 
