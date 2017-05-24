@@ -50,8 +50,11 @@ public class YearBarChartActivity extends AppCompatActivity {
     }
 
 
-    private List<BarEntry> processData(Movies movies)
+    public List<BarEntry> processData(Movies movies)
     {
+        if (movies == null)
+            return null;
+
         List<BarEntry> results = new ArrayList<>();
         HashMap<Integer, Integer> moviesByYear = new HashMap<>();
 

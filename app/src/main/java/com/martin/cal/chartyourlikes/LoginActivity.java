@@ -55,10 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
         if (AccessToken.getCurrentAccessToken() != null && !AccessToken.getCurrentAccessToken().isExpired())
         {
-            if (Profile.getCurrentProfile() == null)
-            {
-                Profile.fetchProfileForCurrentAccessToken();
-            }
+            Profile.fetchProfileForCurrentAccessToken();
             loginCompleted();
         }
     }
