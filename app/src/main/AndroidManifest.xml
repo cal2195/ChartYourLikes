@@ -45,11 +45,19 @@
         <activity
             android:name=".charts.YearBarChartActivity"
             android:label="@string/title_activity_year_bar_chart"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.martin.cal.chartyourlikes.PagerActivity" />
+        </activity>
         <activity
             android:name=".charts.StudioPieChartActivity"
             android:label="@string/title_activity_studio_pie_chart"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.martin.cal.chartyourlikes.PagerActivity" />
+        </activity>
     </application>
 
 </manifest>

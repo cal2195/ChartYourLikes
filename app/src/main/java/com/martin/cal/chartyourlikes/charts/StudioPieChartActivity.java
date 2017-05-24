@@ -36,6 +36,7 @@ public class StudioPieChartActivity extends AppCompatActivity {
         setContentView(R.layout.activity_studio_pie_chart);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         PieChart chart = (PieChart) findViewById(R.id.chart);
 
@@ -52,6 +53,12 @@ public class StudioPieChartActivity extends AppCompatActivity {
         chart.invalidate(); // refresh
     }
 
+    @Override
+    public boolean onSupportNavigateUp()
+    {
+        finish();
+        return true;
+    }
 
     private List<PieEntry> processData(Movies movies)
     {

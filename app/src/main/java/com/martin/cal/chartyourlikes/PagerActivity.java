@@ -104,7 +104,7 @@ public class PagerActivity extends AppCompatActivity implements ProfileFragment.
                 case 1:
                     return "Charts";
                 case 2:
-                    return "Settings";
+                    return "About";
             }
             return null;
         }
