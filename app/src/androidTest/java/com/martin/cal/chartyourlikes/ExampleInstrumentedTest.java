@@ -4,9 +4,17 @@ import android.content.Context;
 import android.support.test.InstrumentationRegistry;
 import android.support.test.runner.AndroidJUnit4;
 
+import com.martin.cal.chartyourlikes.charts.YearBarChartActivity;
+import com.martin.cal.chartyourlikes.data.Movies;
+
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.junit.Assert.*;
 
 /**
@@ -23,4 +31,5 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.martin.cal.chartyourlikes", appContext.getPackageName());
     }
+
 }

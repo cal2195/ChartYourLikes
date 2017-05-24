@@ -19,10 +19,15 @@ public class Movies {
     //Singleton
     public static Movies movies;
 
-    Bundle movieFields;
+    public Bundle movieFields;
     public JSONArray movieData;
 
     public Movies()
+    {
+        setupBundle();
+    }
+
+    public void setupBundle()
     {
         movieFields = new Bundle();
         movieFields.putString("fields", "name,genre,awards,starring,release_date,studio,directed_by,produced_by,id");
