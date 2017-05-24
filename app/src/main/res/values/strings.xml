@@ -18,5 +18,11 @@
     <string name="title_activity_studio_pie_chart">Movies You Like By Studio</string>
 
     <string name="about">Thank you for using Chart Your Likes! I hope you liked it! :) \n\nThis has been developed as part of Plynk\'s interview process. \n\n\n- Cal Martin 23rd May 2017</string>
+    <string name="movies_by_year">Movies by Year</string>
+    <string name="movies_by_studio">Movies By Studio</string>
+    <string name="list_text">We\'ve fetched your favourite movies, and we\'ve compiled the charts below!</string>
+    <string name="data_charts">Data Charts</string>
+    <string name="piechart_text">Here you can see a Pie Chart of the studios that have released your favourite films!</string>
+    <string name="barchart_text">Here are all the films you\'ve liked, plotted by release year! Can you spot your favourite year?</string>
 
 </resources>
