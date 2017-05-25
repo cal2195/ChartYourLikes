@@ -14,6 +14,7 @@ import com.martin.cal.chartyourlikes.R;
 import com.martin.cal.chartyourlikes.data.Movies;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -113,6 +114,12 @@ public class YearBarChartActivity extends AppCompatActivity {
             return null;
         }
 
+        results.sort(new Comparator<BarEntry>() {
+            @Override
+            public int compare(BarEntry o1, BarEntry o2) {
+                return (int) (o1.getX() - o2.getX());
+            }
+        });
         results.add(new BarEntry(highestYear + 1,0)); // Also include a 0 to fix chart bug
 
         return results;

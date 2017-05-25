@@ -39,7 +39,7 @@ public class YearTests {
 
         YearBarChartActivity yearBarChartActivity = rule.getActivity();
 
-        assertThat(yearBarChartActivity.processData(Movies.movies).toString(), is("[Entry, x: 2007.0 y: 1.0, Entry, x: 1994.0 y: 1.0, Entry, x: 2009.0 y: 1.0, Entry, x: 2017.0 y: 1.0, Entry, x: 2010.0 y: 2.0, Entry, x: 2016.0 y: 1.0, Entry, x: 2018.0 y: 1.0, Entry, x: 2019.0 y: 0.0]"));
+        assertThat(yearBarChartActivity.processData(Movies.movies).toString(), is(TestData.LOTS_OF_YEARS));
     }
 
     @Test
@@ -79,7 +79,7 @@ public class YearTests {
 
         YearBarChartActivity yearBarChartActivity = rule.getActivity();
 
-        assertThat(yearBarChartActivity.processData(Movies.movies).toString(), is("[Entry, x: 2008.0 y: 1.0, Entry, x: 2007.0 y: 1.0, Entry, x: 2009.0 y: 0.0]"));
+        assertThat(yearBarChartActivity.processData(Movies.movies).toString(), is("[Entry, x: 2007.0 y: 1.0, Entry, x: 2008.0 y: 1.0, Entry, x: 2009.0 y: 0.0]"));
     }
 
     @Test
