@@ -22,7 +22,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
 @RunWith(AndroidJUnit4.class)
-public class YearTest {
+public class YearTests {
 
     static {
         // Setup movies object dependency
