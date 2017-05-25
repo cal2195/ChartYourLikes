@@ -16,6 +16,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.martin.cal.chartyourlikes.R;
 import com.martin.cal.chartyourlikes.data.Movies;
 
@@ -49,6 +50,7 @@ public class ActorBarChartActivity extends AppCompatActivity {
             if (entries != null) {
 
                 BarDataSet set = new BarDataSet(entries, "Top 10 Actors");
+                set.setColors(ColorTemplate.VORDIPLOM_COLORS);
 
                 BarData data = new BarData(set);
                 data.setBarWidth(0.5f); // set custom bar width

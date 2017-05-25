@@ -13,6 +13,7 @@ import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
 import com.github.mikephil.charting.formatter.IAxisValueFormatter;
+import com.github.mikephil.charting.utils.ColorTemplate;
 import com.martin.cal.chartyourlikes.R;
 import com.martin.cal.chartyourlikes.data.Movies;
 
@@ -44,6 +45,8 @@ public class YearBarChartActivity extends AppCompatActivity {
             if (entries != null) {
 
                 BarDataSet set = new BarDataSet(entries, "Movies By Year");
+                set.setColors(ColorTemplate.VORDIPLOM_COLORS);
+                set.setHighlightEnabled(false);
 
                 Description description = new Description();
                 description.setText("Total Films Released Each Year");

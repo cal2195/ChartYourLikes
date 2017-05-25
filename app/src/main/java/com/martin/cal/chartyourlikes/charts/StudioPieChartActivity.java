@@ -40,7 +40,7 @@ public class StudioPieChartActivity extends AppCompatActivity {
         PieChart chart = (PieChart) findViewById(R.id.chart);
 
         Description description = new Description();
-        description.setText("Only including studios with more than two films!");
+        description.setText("Only including studios with at least two films!");
         chart.setDescription(description);
 
         if (Movies.movies.movieData != null) {
@@ -50,6 +50,7 @@ public class StudioPieChartActivity extends AppCompatActivity {
             PieDataSet set = new PieDataSet(entries, "Movies by Studio");
             set.setColors(ColorTemplate.VORDIPLOM_COLORS);
             PieData data = new PieData(set);
+            chart.setUsePercentValues(true);
             chart.setEntryLabelColor(Color.BLACK);
             chart.setData(data);
             chart.invalidate(); // refresh
@@ -91,8 +92,8 @@ public class StudioPieChartActivity extends AppCompatActivity {
         {
             Map.Entry<String, Integer> entry = (Map.Entry<String, Integer>) it.next();
             System.out.println(entry.getKey() + " has " + entry.getValue());
-            if (entry.getValue() > 2)
-            results.add(new PieEntry(entry.getValue(), entry.getKey()));
+            if (entry.getValue() > 1)
+                results.add(new PieEntry(entry.getValue(), entry.getKey()));
         }
 
         return results;
