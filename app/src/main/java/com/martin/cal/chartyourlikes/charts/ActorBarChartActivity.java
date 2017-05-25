@@ -10,6 +10,7 @@ import android.view.View;
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
@@ -51,6 +52,11 @@ public class ActorBarChartActivity extends AppCompatActivity {
 
                 BarData data = new BarData(set);
                 data.setBarWidth(0.5f); // set custom bar width
+                data.setDrawValues(false);
+
+                Description description = new Description();
+                description.setText("Amount Of Movies Each Actor Appears In");
+                chart.setDescription(description);
 
                 IAxisValueFormatter formatter = new IAxisValueFormatter() {
 
@@ -114,6 +120,8 @@ public class ActorBarChartActivity extends AppCompatActivity {
         {
             if (actorMap.containsKey(topActors[i]))
                 results.add(new BarEntry(i, actorMap.get(topActors[i])));
+            else
+                results.add(new BarEntry(i, 0));
         }
 
         return results;

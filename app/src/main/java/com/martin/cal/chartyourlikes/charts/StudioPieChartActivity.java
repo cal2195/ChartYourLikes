@@ -28,7 +28,6 @@ import java.util.Map;
 
 public class StudioPieChartActivity extends AppCompatActivity {
 
-    Description description = new Description();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,7 @@ public class StudioPieChartActivity extends AppCompatActivity {
 
         PieChart chart = (PieChart) findViewById(R.id.chart);
 
+        Description description = new Description();
         description.setText("Only including studios with more than two films!");
         chart.setDescription(description);
 

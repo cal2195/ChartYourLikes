@@ -45,10 +45,17 @@ public class YearBarChartActivity extends AppCompatActivity {
 
                 BarDataSet set = new BarDataSet(entries, "Movies By Year");
 
+                Description description = new Description();
+                description.setText("Total Films Released Each Year");
+                chart.setDescription(description);
+
                 BarData data = new BarData(set);
                 data.setBarWidth(0.9f); // set custom bar width
+                data.setDrawValues(false);
                 chart.setData(data);
                 chart.getXAxis().setGranularity(1f);
+                chart.getAxisLeft().setGranularity(1f);
+                chart.getAxisRight().setGranularity(1f);
                 chart.setFitBars(true); // make the x-axis fit exactly all bars
                 chart.invalidate(); // refresh
             }
@@ -95,6 +102,8 @@ public class YearBarChartActivity extends AppCompatActivity {
             System.out.println(entry.getKey() + " has " + entry.getValue());
             results.add(new BarEntry(entry.getKey(), entry.getValue()));
         }
+
+        results.add(new BarEntry(2018,0));
 
         return results;
     }
