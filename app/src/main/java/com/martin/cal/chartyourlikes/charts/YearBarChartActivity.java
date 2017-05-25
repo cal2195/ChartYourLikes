@@ -13,8 +13,6 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 import com.martin.cal.chartyourlikes.R;
 import com.martin.cal.chartyourlikes.data.Movies;
 
-import org.json.JSONException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -92,8 +90,8 @@ public class YearBarChartActivity extends AppCompatActivity {
                         current = 0;
                     moviesByYear.put(date, current + 1);
                 }
-            } catch (JSONException e) {
-                // Movie missing date field - ignore
+            } catch (Exception e) {
+                // Movie missing or malformed date field - ignore
             }
         }
 
