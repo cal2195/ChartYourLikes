@@ -12,14 +12,7 @@ import android.widget.Button;
 import com.martin.cal.chartyourlikes.charts.ActorBarChartActivity;
 import com.martin.cal.chartyourlikes.charts.StudioPieChartActivity;
 import com.martin.cal.chartyourlikes.charts.YearBarChartActivity;
-import com.martin.cal.chartyourlikes.data.Movies;
 
-
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link ChartListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class ChartListFragment extends Fragment {
 
     enum Charts { YEAR_BARCHART, STUDIO_PIECHART, ACTOR_BARCHART }
@@ -28,13 +21,6 @@ public class ChartListFragment extends Fragment {
         // Required empty public constructor
     }
 
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @return A new instance of fragment ChartListFragment.
-     */
-    // TODO: Rename and change types and number of parameters
     public static ChartListFragment newInstance() {
         ChartListFragment fragment = new ChartListFragment();
         return fragment;
@@ -75,7 +61,6 @@ public class ChartListFragment extends Fragment {
             }
         });
 
-
         return rootView;
     }
 
@@ -100,5 +85,4 @@ public class ChartListFragment extends Fragment {
                 break;
         }
     }
-
 }

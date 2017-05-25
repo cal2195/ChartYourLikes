@@ -1,37 +1,31 @@
 package com.martin.cal.chartyourlikes;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import android.support.v7.app.AppCompatActivity;
 
 import com.facebook.AccessToken;
-import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.Profile;
-import com.facebook.ProfileTracker;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 
-import java.sql.SQLOutput;
 import java.util.Arrays;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class LoginActivity extends AppCompatActivity {
 
     CallbackManager callbackManager;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
-
+        // Keep track of FB login
         callbackManager = CallbackManager.Factory.create();
 
         LoginButton loginButton = (LoginButton) findViewById(R.id.login_button);
@@ -54,11 +48,14 @@ public class LoginActivity extends AppCompatActivity {
             public void onError(FacebookException exception) {
                 System.out.println("Facebook Login Error!");
                 System.out.println(exception.toString());
+                SweetAlertDialog dialog = new SweetAlertDialog(LoginActivity.this, SweetAlertDialog.ERROR_TYPE);
+                dialog.setTitleText("Login Error!");
+                dialog.setContentText("There was a problem logging in! Please try again! :)");
+                dialog.show();
             }
         });
 
-
-
+        // Auto login
         if (AccessToken.getCurrentAccessToken() != null && !AccessToken.getCurrentAccessToken().isExpired())
         {
             Profile.fetchProfileForCurrentAccessToken();

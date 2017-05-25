@@ -10,7 +10,6 @@ import com.facebook.HttpMethod;
 import com.facebook.Profile;
 
 import org.json.JSONArray;
-import org.json.JSONException;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
@@ -19,7 +18,7 @@ import cn.pedant.SweetAlert.SweetAlertDialog;
  */
 
 public class Movies {
-    //Singleton
+    //Singleton for easy access
     public static Movies movies;
 
     public Bundle movieFields;
@@ -32,6 +31,7 @@ public class Movies {
 
     public void setupBundle()
     {
+        // Setup field for request
         movieFields = new Bundle();
         movieFields.putString("fields", "name,genre,awards,starring,release_date,studio,directed_by,produced_by,id");
     }
@@ -56,6 +56,7 @@ public class Movies {
                             processMovies(response.getJSONObject().getJSONArray("data"));
                         } catch (Exception e) {
                             e.printStackTrace();
+                            // No internet connection
                             SweetAlertDialog dialog = new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE);
                             dialog.setTitleText("Connection Error!");
                             dialog.setContentText("It looks like you have no internet connection! :(");
@@ -64,6 +65,7 @@ public class Movies {
                     }
                 }
         );
+        // Set the request fields
         request.setParameters(movieFields);
         request.executeAsync();
     }

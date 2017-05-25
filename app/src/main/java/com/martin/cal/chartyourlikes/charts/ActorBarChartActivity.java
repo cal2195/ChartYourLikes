@@ -1,13 +1,9 @@
 package com.martin.cal.chartyourlikes.charts;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 
-import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.HorizontalBarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
@@ -24,9 +20,7 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 public class ActorBarChartActivity extends AppCompatActivity {
 
@@ -35,21 +29,23 @@ public class ActorBarChartActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_actor_bar_chart);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        // Add up button and icon
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
         HorizontalBarChart chart = (HorizontalBarChart) findViewById(R.id.chart);
 
+        // If we have data
         if (Movies.movies.movieData != null) {
 
             List<BarEntry> entries = processData(Movies.movies);
 
             if (entries != null) {
-
                 BarDataSet set = new BarDataSet(entries, "Top 10 Actors");
                 set.setColors(ColorTemplate.VORDIPLOM_COLORS);
 
@@ -61,6 +57,7 @@ public class ActorBarChartActivity extends AppCompatActivity {
                 description.setText("Amount Of Movies Each Actor Appears In");
                 chart.setDescription(description);
 
+                // Actors names on axis
                 IAxisValueFormatter formatter = new IAxisValueFormatter() {
 
                     @Override
@@ -72,9 +69,11 @@ public class ActorBarChartActivity extends AppCompatActivity {
                 XAxis xAxis = chart.getXAxis();
                 xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
                 xAxis.setValueFormatter(formatter);
+
                 chart.getAxisRight().setGranularity(1f);
                 chart.getAxisLeft().setGranularity(1f);
                 chart.getXAxis().setLabelCount(topActors.length, false);
+
                 chart.setData(data);
                 chart.setFitBars(true); // make the x-axis fit exactly all bars
                 chart.invalidate(); // refresh
@@ -85,14 +84,14 @@ public class ActorBarChartActivity extends AppCompatActivity {
     @Override
     public boolean onSupportNavigateUp()
     {
-        finish();
+        finish(); // Go up to parent activity on up button
         return true;
     }
 
     public List<BarEntry> processData(Movies movies)
     {
         if (movies == null)
-            return null;
+            return null; // No data
 
         List<BarEntry> results = new ArrayList<>();
         HashMap<String, Integer> actorMap = new HashMap<>();
@@ -115,7 +114,7 @@ public class ActorBarChartActivity extends AppCompatActivity {
                     }
                 }
             } catch (JSONException e) {
-                //e.printStackTrace();
+                // Movie missing starring actors field - ignore
             }
         }
 
@@ -124,7 +123,7 @@ public class ActorBarChartActivity extends AppCompatActivity {
             if (actorMap.containsKey(topActors[i]))
                 results.add(new BarEntry(i, actorMap.get(topActors[i])));
             else
-                results.add(new BarEntry(i, 0));
+                results.add(new BarEntry(i, 0)); // Add actor with 0 films
         }
 
         return results;
