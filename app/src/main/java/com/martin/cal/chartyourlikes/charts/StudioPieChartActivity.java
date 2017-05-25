@@ -65,7 +65,7 @@ public class StudioPieChartActivity extends AppCompatActivity {
         return true;
     }
 
-    private List<PieEntry> processData(Movies movies)
+    protected List<PieEntry> processData(Movies movies)
     {
         if (movies == null)
             return null; // No data

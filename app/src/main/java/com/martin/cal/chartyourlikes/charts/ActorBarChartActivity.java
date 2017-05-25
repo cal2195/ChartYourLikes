@@ -88,7 +88,7 @@ public class ActorBarChartActivity extends AppCompatActivity {
         return true;
     }
 
-    public List<BarEntry> processData(Movies movies)
+    protected List<BarEntry> processData(Movies movies)
     {
         if (movies == null)
             return null; // No data

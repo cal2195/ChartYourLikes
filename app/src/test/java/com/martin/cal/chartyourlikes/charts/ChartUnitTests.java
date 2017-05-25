@@ -1,6 +1,5 @@
-package com.martin.cal.chartyourlikes;
+package com.martin.cal.chartyourlikes.charts;
 
-import com.martin.cal.chartyourlikes.charts.YearBarChartActivity;
 import com.martin.cal.chartyourlikes.data.Movies;
 
 import org.junit.Test;
@@ -23,5 +22,19 @@ public class ChartUnitTests {
     {
         YearBarChartActivity yearBarChartActivity = new YearBarChartActivity();
         assertThat(yearBarChartActivity.processData(null), is(nullValue()));
+    }
+
+    @Test
+    public void testActorBarChartDataNull()
+    {
+        ActorBarChartActivity actorBarChartActivity = new ActorBarChartActivity();
+        assertThat(actorBarChartActivity.processData(null), is(nullValue()));
+    }
+
+    @Test
+    public void testStudioPieChartDataNull()
+    {
+        StudioPieChartActivity studioPieChartActivity = new StudioPieChartActivity();
+        assertThat(studioPieChartActivity.processData(null), is(nullValue()));
     }
 }

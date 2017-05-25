@@ -71,7 +71,7 @@ public class YearBarChartActivity extends AppCompatActivity {
         return true;
     }
 
-    public List<BarEntry> processData(Movies movies)
+    protected List<BarEntry> processData(Movies movies)
     {
         if (movies == null)
             return null; // No data
@@ -107,6 +107,12 @@ public class YearBarChartActivity extends AppCompatActivity {
 
             // Update highest year
             highestYear = ((highestYear < entry.getKey()) ? entry.getKey() : highestYear);
+        }
+
+        // Did we have data?
+        if (highestYear == 0)
+        {
+            return null;
         }
 
         results.add(new BarEntry(highestYear + 1,0)); // Also include a 0 to fix chart bug

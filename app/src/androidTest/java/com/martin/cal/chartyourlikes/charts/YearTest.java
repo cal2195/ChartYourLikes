@@ -12,6 +12,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -37,5 +38,25 @@ public class YearTest {
         YearBarChartActivity yearBarChartActivity = rule.getActivity();
 
         assertThat(yearBarChartActivity.processData(Movies.movies).toString(), is("[Entry, x: 2007.0 y: 1.0, Entry, x: 1994.0 y: 1.0, Entry, x: 2009.0 y: 1.0, Entry, x: 2017.0 y: 1.0, Entry, x: 2010.0 y: 2.0, Entry, x: 2016.0 y: 1.0, Entry, x: 2018.0 y: 1.0, Entry, x: 2019.0 y: 0.0]"));
+    }
+
+    @Test
+    public void testYearBarChartDataOne() throws JSONException {
+
+        Movies.movies.movieData = new JSONArray("[{\"name\":\"Ratatouille\",\"genre\":\"Animation \",\"starring\":\"Patton Oswalt\\t (Remy), Ian Holm (Skinner), Lou Romano (Linguini), Brian Dennehy  (Django), Peter Sohn (Emile), Peter O'Toole (Anton Ego), Brad Garrett (Gusteau),   Janeane Garofalo (Colette), Will Arnett (Horst) \",\"release_date\":\"20070629\",\"studio\":\"Disney•Pixar\",\"directed_by\":\"Brad Bird and Jan Pinkava \",\"produced_by\":\"John Lasseter, Andrew Stanton, and Galyn Susman\",\"id\":\"17377140236\"}]");
+
+        YearBarChartActivity yearBarChartActivity = rule.getActivity();
+
+        assertThat(yearBarChartActivity.processData(Movies.movies).toString(), is("[Entry, x: 2007.0 y: 1.0, Entry, x: 2008.0 y: 0.0]"));
+    }
+
+    @Test
+    public void testYearBarChartDataNone() throws JSONException {
+
+        Movies.movies.movieData = new JSONArray("[{\"name\":\"Ratatouille\",\"genre\":\"Animation \",\"starring\":\"Patton Oswalt\\t (Remy), Ian Holm (Skinner), Lou Romano (Linguini), Brian Dennehy  (Django), Peter Sohn (Emile), Peter O'Toole (Anton Ego), Brad Garrett (Gusteau),   Janeane Garofalo (Colette), Will Arnett (Horst) \",\"studio\":\"Disney•Pixar\",\"directed_by\":\"Brad Bird and Jan Pinkava \",\"produced_by\":\"John Lasseter, Andrew Stanton, and Galyn Susman\",\"id\":\"17377140236\"}]");
+
+        YearBarChartActivity yearBarChartActivity = rule.getActivity();
+
+        assertThat(yearBarChartActivity.processData(Movies.movies), is(nullValue()));
     }
 }
