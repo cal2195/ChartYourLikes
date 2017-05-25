@@ -94,7 +94,7 @@ public class ProfileFragment extends Fragment {
 
         // Fetch and process movie likes
         Movies.movies = new Movies();
-        Movies.movies.fetchMovies();
+        Movies.movies.fetchMovies(getContext());
     }
 
     public void fetchProfileInfo(final View rootView)
@@ -115,28 +115,28 @@ public class ProfileFragment extends Fragment {
                             String gender = "Gender: " + response.getJSONObject().getString("gender");
                             TextView genderView = (TextView) rootView.findViewById(R.id.genderTextView);
                             genderView.setText(gender);
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             System.out.println("Gender not found!");
                         }
                         try {
                             String email = response.getJSONObject().getString("email");
                             TextView emailView = (TextView) rootView.findViewById(R.id.emailTextView);
                             emailView.setText(email);
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             System.out.println("Email not found!");
                         }
                         try {
                             String locale = "Locale: " + response.getJSONObject().getString("locale");
                             TextView localeTextView = (TextView) rootView.findViewById(R.id.localeTextView);
                             localeTextView.setText(locale);
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             System.out.println("Locale not found!");
                         }
                         try {
                             String timezone = "Timezone: UTC " + response.getJSONObject().getString("timezone");
                             TextView timezoneTextView = (TextView) rootView.findViewById(R.id.timezoneTextView);
                             timezoneTextView.setText(timezone);
-                        } catch (JSONException e) {
+                        } catch (Exception e) {
                             System.out.println("Timezone not found!");
                         }
                     }

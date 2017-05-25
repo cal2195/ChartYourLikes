@@ -1,5 +1,6 @@
 package com.martin.cal.chartyourlikes.data;
 
+import android.content.Context;
 import android.os.Bundle;
 
 import com.facebook.AccessToken;
@@ -10,6 +11,8 @@ import com.facebook.Profile;
 
 import org.json.JSONArray;
 import org.json.JSONException;
+
+import cn.pedant.SweetAlert.SweetAlertDialog;
 
 /**
  * Created by cal on 23/05/17.
@@ -38,7 +41,7 @@ public class Movies {
         this.movieData = movies;
     }
 
-    public void fetchMovies()
+    public void fetchMovies(final Context context)
     {
         /* make the API call */
         GraphRequest request = new GraphRequest(
@@ -53,6 +56,10 @@ public class Movies {
                             processMovies(response.getJSONObject().getJSONArray("data"));
                         } catch (Exception e) {
                             e.printStackTrace();
+                            SweetAlertDialog dialog = new SweetAlertDialog(context, SweetAlertDialog.ERROR_TYPE);
+                            dialog.setTitleText("Connection Error!");
+                            dialog.setContentText("It looks like you have no internet connection! :(");
+                            dialog.show();
                         }
                     }
                 }

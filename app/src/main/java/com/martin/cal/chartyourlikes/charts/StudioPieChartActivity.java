@@ -43,14 +43,17 @@ public class StudioPieChartActivity extends AppCompatActivity {
         description.setText("Only including studios with more than two films!");
         chart.setDescription(description);
 
-        List<PieEntry> entries = processData(Movies.movies);
+        if (Movies.movies.movieData != null) {
 
-        PieDataSet set = new PieDataSet(entries, "Movies by Studio");
-        set.setColors(ColorTemplate.VORDIPLOM_COLORS);
-        PieData data = new PieData(set);
-        chart.setEntryLabelColor(Color.BLACK);
-        chart.setData(data);
-        chart.invalidate(); // refresh
+            List<PieEntry> entries = processData(Movies.movies);
+
+            PieDataSet set = new PieDataSet(entries, "Movies by Studio");
+            set.setColors(ColorTemplate.VORDIPLOM_COLORS);
+            PieData data = new PieData(set);
+            chart.setEntryLabelColor(Color.BLACK);
+            chart.setData(data);
+            chart.invalidate(); // refresh
+        }
     }
 
     @Override

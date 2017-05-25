@@ -37,19 +37,21 @@ public class YearBarChartActivity extends AppCompatActivity {
 
         BarChart chart = (BarChart) findViewById(R.id.chart);
 
+        if (Movies.movies.movieData != null) {
 
-        List<BarEntry> entries = processData(Movies.movies);
+            List<BarEntry> entries = processData(Movies.movies);
 
-        if (entries != null) {
+            if (entries != null) {
 
-            BarDataSet set = new BarDataSet(entries, "Movies By Year");
+                BarDataSet set = new BarDataSet(entries, "Movies By Year");
 
-            BarData data = new BarData(set);
-            data.setBarWidth(0.9f); // set custom bar width
-            chart.setData(data);
-            chart.getXAxis().setGranularity(1f);
-            chart.setFitBars(true); // make the x-axis fit exactly all bars
-            chart.invalidate(); // refresh
+                BarData data = new BarData(set);
+                data.setBarWidth(0.9f); // set custom bar width
+                chart.setData(data);
+                chart.getXAxis().setGranularity(1f);
+                chart.setFitBars(true); // make the x-axis fit exactly all bars
+                chart.invalidate(); // refresh
+            }
         }
     }
 

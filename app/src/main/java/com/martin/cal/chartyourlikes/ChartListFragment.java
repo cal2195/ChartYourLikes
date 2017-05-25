@@ -24,8 +24,6 @@ public class ChartListFragment extends Fragment {
 
     enum Charts { YEAR_BARCHART, STUDIO_PIECHART, ACTOR_BARCHART }
 
-    Bundle movieBundle;
-
     public ChartListFragment() {
         // Required empty public constructor
     }

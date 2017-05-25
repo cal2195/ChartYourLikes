@@ -41,33 +41,35 @@ public class ActorBarChartActivity extends AppCompatActivity {
 
         HorizontalBarChart chart = (HorizontalBarChart) findViewById(R.id.chart);
 
+        if (Movies.movies.movieData != null) {
 
-        List<BarEntry> entries = processData(Movies.movies);
+            List<BarEntry> entries = processData(Movies.movies);
 
-        if (entries != null) {
+            if (entries != null) {
 
-            BarDataSet set = new BarDataSet(entries, "Top 10 Actors");
+                BarDataSet set = new BarDataSet(entries, "Top 10 Actors");
 
-            BarData data = new BarData(set);
-            data.setBarWidth(0.5f); // set custom bar width
+                BarData data = new BarData(set);
+                data.setBarWidth(0.5f); // set custom bar width
 
-            IAxisValueFormatter formatter = new IAxisValueFormatter() {
+                IAxisValueFormatter formatter = new IAxisValueFormatter() {
 
-                @Override
-                public String getFormattedValue(float value, AxisBase axis) {
-                    return topActors[(int) value];
-                }
-            };
+                    @Override
+                    public String getFormattedValue(float value, AxisBase axis) {
+                        return topActors[(int) value];
+                    }
+                };
 
-            XAxis xAxis = chart.getXAxis();
-            xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
-            xAxis.setValueFormatter(formatter);
-            chart.getAxisRight().setGranularity(1f);
-            chart.getAxisLeft().setGranularity(1f);
-            chart.getXAxis().setLabelCount(topActors.length, false);
-            chart.setData(data);
-            chart.setFitBars(true); // make the x-axis fit exactly all bars
-            chart.invalidate(); // refresh
+                XAxis xAxis = chart.getXAxis();
+                xAxis.setGranularity(1f); // minimum axis-step (interval) is 1
+                xAxis.setValueFormatter(formatter);
+                chart.getAxisRight().setGranularity(1f);
+                chart.getAxisLeft().setGranularity(1f);
+                chart.getXAxis().setLabelCount(topActors.length, false);
+                chart.setData(data);
+                chart.setFitBars(true); // make the x-axis fit exactly all bars
+                chart.invalidate(); // refresh
+            }
         }
     }
 
