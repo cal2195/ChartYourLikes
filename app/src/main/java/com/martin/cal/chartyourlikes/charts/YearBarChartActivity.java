@@ -34,6 +34,7 @@ public class YearBarChartActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
         BarChart chart = (BarChart) findViewById(R.id.chart);
+        chart.setNoDataText("No data! Please like more films, or try again later!");
 
         if (Movies.movies.movieData != null) {
 
@@ -48,8 +49,6 @@ public class YearBarChartActivity extends AppCompatActivity {
                 Description description = new Description();
                 description.setText("Total Films Released Each Year");
                 chart.setDescription(description);
-
-                chart.setNoDataText("No data! Please like more films, or try again later!");
 
                 BarData data = new BarData(set);
                 data.setBarWidth(0.9f); // set custom bar width

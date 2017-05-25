@@ -39,6 +39,7 @@ public class ActorBarChartActivity extends AppCompatActivity {
         getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
         HorizontalBarChart chart = (HorizontalBarChart) findViewById(R.id.chart);
+        chart.setNoDataText("No data! Please like more films, or try again later!");
 
         // If we have data
         if (Movies.movies.movieData != null) {
@@ -56,8 +57,6 @@ public class ActorBarChartActivity extends AppCompatActivity {
                 Description description = new Description();
                 description.setText("Amount Of Movies Each Actor Appears In");
                 chart.setDescription(description);
-
-                chart.setNoDataText("No data! Please like more films, or try again later!");
 
                 // Actors names on axis
                 IAxisValueFormatter formatter = new IAxisValueFormatter() {
