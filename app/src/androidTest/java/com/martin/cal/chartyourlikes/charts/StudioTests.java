@@ -13,6 +13,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.nullValue;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
@@ -79,7 +80,7 @@ public class StudioTests {
 
         StudioPieChartActivity studioPieChartActivity = rule.getActivity();
 
-        assertThat(studioPieChartActivity.processData(Movies.movies).toString(), is("[]"));
+        assertThat(studioPieChartActivity.processData(Movies.movies), is(nullValue()));
     }
 
     @Test
@@ -89,7 +90,7 @@ public class StudioTests {
 
         StudioPieChartActivity studioPieChartActivity = rule.getActivity();
 
-        assertThat(studioPieChartActivity.processData(Movies.movies).toString(), is("[]"));
+        assertThat(studioPieChartActivity.processData(Movies.movies), is(nullValue()));
     }
 
 
