@@ -36,6 +36,7 @@ public class StudioPieChartActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
         PieChart chart = (PieChart) findViewById(R.id.chart);
 

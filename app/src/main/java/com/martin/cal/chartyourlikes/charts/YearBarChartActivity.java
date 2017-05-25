@@ -35,6 +35,7 @@ public class YearBarChartActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setIcon(R.mipmap.ic_launcher);
 
         BarChart chart = (BarChart) findViewById(R.id.chart);
 
