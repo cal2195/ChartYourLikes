@@ -114,6 +114,7 @@ public class YearBarChartActivity extends AppCompatActivity {
             return null;
         }
 
+        // Results must be sorted ASC to prevent disappearing bars
         results.sort(new Comparator<BarEntry>() {
             @Override
             public int compare(BarEntry o1, BarEntry o2) {
