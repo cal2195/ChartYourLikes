@@ -34,7 +34,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginStart="20dp"
         android:layout_marginTop="20dp"
-        android:text="Here you can see some top actors, and how many movies they appear in that you've liked!"
+        android:text="@string/actor_barchart_text"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"

@@ -57,6 +57,8 @@ public class ActorBarChartActivity extends AppCompatActivity {
                 description.setText("Amount Of Movies Each Actor Appears In");
                 chart.setDescription(description);
 
+                chart.setNoDataText("No data! Please like more films, or try again later!");
+
                 // Actors names on axis
                 IAxisValueFormatter formatter = new IAxisValueFormatter() {
 

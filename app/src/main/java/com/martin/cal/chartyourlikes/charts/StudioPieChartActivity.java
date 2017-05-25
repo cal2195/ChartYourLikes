@@ -42,19 +42,24 @@ public class StudioPieChartActivity extends AppCompatActivity {
         description.setText("Only including studios with at least two films!");
         chart.setDescription(description);
 
+        chart.setNoDataText("No data! Please like more films, or try again later!");
+
         if (Movies.movies.movieData != null) {
 
             List<PieEntry> entries = processData(Movies.movies);
 
-            PieDataSet set = new PieDataSet(entries, "Movies by Studio");
-            set.setColors(ColorTemplate.VORDIPLOM_COLORS);
+            if (entries != null) {
 
-            PieData data = new PieData(set);
+                PieDataSet set = new PieDataSet(entries, "Movies by Studio");
+                set.setColors(ColorTemplate.VORDIPLOM_COLORS);
 
-            chart.setUsePercentValues(true);
-            chart.setEntryLabelColor(Color.BLACK);
-            chart.setData(data);
-            chart.invalidate(); // refresh
+                PieData data = new PieData(set);
+
+                chart.setUsePercentValues(true);
+                chart.setEntryLabelColor(Color.BLACK);
+                chart.setData(data);
+                chart.invalidate(); // refresh
+            }
         }
     }
 
@@ -99,6 +104,9 @@ public class StudioPieChartActivity extends AppCompatActivity {
             if (entry.getValue() > 1) // Just take studios with at least 2 films - prevents overcrowding
                 results.add(new PieEntry(entry.getValue(), entry.getKey()));
         }
+
+        if (results.size() == 0)
+            return null;
 
         return results;
     }

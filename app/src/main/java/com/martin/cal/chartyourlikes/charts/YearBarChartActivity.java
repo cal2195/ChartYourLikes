@@ -14,6 +14,7 @@ import com.martin.cal.chartyourlikes.R;
 import com.martin.cal.chartyourlikes.data.Movies;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -47,6 +48,8 @@ public class YearBarChartActivity extends AppCompatActivity {
                 Description description = new Description();
                 description.setText("Total Films Released Each Year");
                 chart.setDescription(description);
+
+                chart.setNoDataText("No data! Please like more films, or try again later!");
 
                 BarData data = new BarData(set);
                 data.setBarWidth(0.9f); // set custom bar width
@@ -115,7 +118,7 @@ public class YearBarChartActivity extends AppCompatActivity {
         }
 
         // Results must be sorted ASC to prevent disappearing bars
-        results.sort(new Comparator<BarEntry>() {
+        Collections.sort(results, new Comparator<BarEntry>() {
             @Override
             public int compare(BarEntry o1, BarEntry o2) {
                 return (int) (o1.getX() - o2.getX());
