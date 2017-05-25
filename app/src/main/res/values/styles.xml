@@ -15,8 +15,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="MyButton" parent="Widget.AppCompat.Button.Colored">
-    </style>
+    <style name="MyButton" parent="Widget.AppCompat.Button.Colored"></style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 

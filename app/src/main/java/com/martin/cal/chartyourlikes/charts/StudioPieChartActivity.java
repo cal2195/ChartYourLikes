@@ -40,7 +40,7 @@ public class StudioPieChartActivity extends AppCompatActivity {
 
         PieChart chart = (PieChart) findViewById(R.id.chart);
 
-        description.setText("Only including studios with more than one film!");
+        description.setText("Only including studios with more than two films!");
         chart.setDescription(description);
 
         List<PieEntry> entries = processData(Movies.movies);
@@ -88,7 +88,7 @@ public class StudioPieChartActivity extends AppCompatActivity {
         {
             Map.Entry<String, Integer> entry = (Map.Entry<String, Integer>) it.next();
             System.out.println(entry.getKey() + " has " + entry.getValue());
-            if (entry.getValue() > 1)
+            if (entry.getValue() > 2)
             results.add(new PieEntry(entry.getValue(), entry.getKey()));
         }
 

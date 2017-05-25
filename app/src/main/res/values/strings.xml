@@ -19,5 +19,6 @@
     <string name="data_charts">Data Charts</string>
     <string name="piechart_text">Here you can see a Pie Chart of the studios that have released your favourite films!</string>
     <string name="barchart_text">Here are all the films you\'ve liked, plotted by release year! Can you spot your favourite year?</string>
+    <string name="title_activity_actor_bar_chart">Top 10 Actors</string>
 
 </resources>
